@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import("./user/user.module").then(m => m.UserModule)
   },
   {
-    path: "fixture",
+    path: "fixtures",
     loadChildren: () =>
       import("./fixtures/fixture.module").then(m => m.FixtureModule)
   },

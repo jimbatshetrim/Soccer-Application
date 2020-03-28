@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
     return this.authService.register(this.userForm.value).subscribe(
       () => {
         console.log("registration successful");
-        this.router.navigateByUrl("/fixture/fixture");
+        this.router.navigateByUrl("/fixtures/fixture");
       },
       err => {
         console.error("error logging in", err);

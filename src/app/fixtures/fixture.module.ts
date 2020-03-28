@@ -10,6 +10,12 @@ import { FixtureAddComponent } from "./fixture-add/fixture-add.component";
 import { BetComponent } from "./bet/bet.component";
 import { BookingComponent } from "./booking/booking.component";
 
+import { fixtureReducer } from "./state/fixture.reducer";
+import { FixtureEffect } from "./state/fixture.effect";
+
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+
 import { ToastrModule } from "ngx-toastr";
 import { FixtureRoutingModule } from "./fixture-routing.module";
 
@@ -31,7 +37,9 @@ import { FixtureRoutingModule } from "./fixture-routing.module";
       timeOut: 3000,
       positionClass: "toast-top-right",
       easing: "ease-in"
-    })
+    }),
+    StoreModule.forFeature("fixtures", fixtureReducer),
+    EffectsModule.forFeature([FixtureEffect])
   ]
 })
 export class FixtureModule {}

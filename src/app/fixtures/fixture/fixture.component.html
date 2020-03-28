@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody class="text-center">
-      <tr *ngFor="let fixture of fixtures">
+      <tr *ngFor="let fixture of fixtures$ | async">
         <td>{{ fixture.home }}</td>
         <td>
           <div class="col">{{ fixture.time }}</div>

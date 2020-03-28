@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container">
   <form [formGroup]="matchForm" (ngSubmit)="submit()">
-    <a routerLink="/fixture/fixture"
+    <a routerLink="/fixtures/fixture"
       ><button class="btn btn-outline-primary btn-sm">Go back</button></a
     >
     <hr />
@@ -357,6 +357,7 @@
       </button>
     </div>
     <hr />
+    <div class="alert alert-danger" *ngIf="errMsg">{{ errMsg }}</div>
     <div class="row ">
       <button class="btn btn-danger col-lg-2 m-1 mx-auto" type="reset">
         Reset

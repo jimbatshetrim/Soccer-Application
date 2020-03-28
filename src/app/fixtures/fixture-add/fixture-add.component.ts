@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormArray, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 
-import { FixtureService } from "../../_services/fixture.service";
+import * as fixtureActions from "../state/fixture.actions";
+import * as fromFixture from "../state/fixture.reducer";
+import { Fixture } from "../../model/fixture";
 
 @Component({
   selector: "app-fixture-add",
@@ -12,11 +15,12 @@ import { FixtureService } from "../../_services/fixture.service";
 export class FixtureAddComponent implements OnInit {
   public matchForm: FormGroup;
   counter: number = 0;
+  errMsg: string;
 
   constructor(
-    private data: FixtureService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store<fromFixture.AppState>
   ) {}
 
   ngOnInit(): void {
@@ -64,9 +68,14 @@ export class FixtureAddComponent implements OnInit {
   }
 
   submit() {
-    this.data.addFixture(this.matchForm.value).subscribe(() => {
-      console.log("data created");
-      this.router.navigateByUrl("/fixture/fixture");
-    });
+    if (this.matchForm.invalid) {
+      this.errMsg = "Invalid Form";
+      return;
+    }
+
+    const newFixture = this.matchForm.value;
+
+    this.store.dispatch(new fixtureActions.CreateFixture(newFixture));
+    this.router.navigateByUrl("/fixtures/fixture");
   }
 }

@@ -1,6 +1,10 @@
 <div class="container">
   <div class="card mx-auto" style="width: 500px;">
     <div class="card-body">
+      <div class="alert alert-success">
+        Email: admin@admin.com <br />
+        password: 123456
+      </div>
       <form [formGroup]="userForm" (ngSubmit)="login()">
         <div *ngIf="response" class="alert alert-danger">{{ response }}</div>
         <input

@@ -16,6 +16,7 @@ export class BookingComponent implements OnInit {
   public bookingForm: FormGroup;
   userId: string;
   public booked;
+  errMsg: string;
 
   constructor(
     private data: FixtureService,
@@ -51,6 +52,10 @@ export class BookingComponent implements OnInit {
   }
 
   clicked() {
+    if (this.bookingForm.invalid) {
+      this.errMsg = "invalid Form";
+      return;
+    }
     let you = this.bookingForm.value;
     this.data.getDataById(you.matchId).subscribe(resp => {
       this.booked = resp;
@@ -62,7 +67,7 @@ export class BookingComponent implements OnInit {
       this.booked = data;
       console.log(this.booked);
       this.toastr.success("Booking placed Successful");
-      this.router.navigate(["/fixture/fixture"]);
+      this.router.navigate(["/fixtures/fixture"]);
     });
   }
 }

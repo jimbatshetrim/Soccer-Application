@@ -1,6 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
+
+import * as fixtureActions from "../state/fixture.actions";
+import * as fromFixture from "../state/fixture.reducer";
+import { Fixture } from "../../model/fixture";
 import { FixtureService } from "../../_services/fixture.service";
 import { AuthService } from "../../_services/auth.service";
 
@@ -11,12 +17,14 @@ import { AuthService } from "../../_services/auth.service";
 })
 export class FixtureDetailComponent implements OnInit {
   public fixture;
+  public error$: Observable<string>;
 
   constructor(
     private data: FixtureService,
     private route: ActivatedRoute,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private store: Store<fromFixture.AppState>
   ) {}
 
   ngOnInit(): void {
@@ -27,9 +35,8 @@ export class FixtureDetailComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.data.deleteFixture(id).subscribe(() => {
-      this.router.navigate(["/fixture/fixture"]);
-    });
+    this.store.dispatch(new fixtureActions.DeleteFixture(id));
+    this.router.navigate(["/fixtures/fixture"]);
   }
 
   accessControl(): boolean {

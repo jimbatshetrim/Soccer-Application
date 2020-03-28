@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <a routerLink="/fixture/fixture"
+  <a routerLink="/fixtures/fixture"
     ><button type="button" class="btn btn-sm btn-outline-primary">
       Go back
     </button></a
@@ -61,6 +61,7 @@
           </span>
         </span>
       </div>
+      <div class="alert alert-danger" *ngIf="errMsg">{{ errMsg }}</div>
       <button
         class="btn btn-success"
         type="button"

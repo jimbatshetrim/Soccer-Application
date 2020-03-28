@@ -17,6 +17,7 @@ export class BetComponent implements OnInit {
   matchId: number;
   userId: string;
   public bettingForm: FormGroup;
+  errMsg: string;
 
   constructor(
     private data: FixtureService,
@@ -51,6 +52,10 @@ export class BetComponent implements OnInit {
   }
 
   submit() {
+    if (this.bettingForm.invalid) {
+      this.errMsg = "invalid Form";
+      return;
+    }
     this.userService.placeABet(this.bettingForm.value).subscribe(() => {
       console.log(this.bettingForm.value);
       this.toastr.success("Bet placed Successful");

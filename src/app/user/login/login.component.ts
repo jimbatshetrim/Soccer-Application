@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       resp => {
         this.response = resp.response;
         console.log(resp);
-        this.router.navigateByUrl("/fixture/fixture");
+        this.router.navigateByUrl("/fixtures/fixture");
       },
       err => {
         console.error("error loggin in", err);
