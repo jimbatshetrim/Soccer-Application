@@ -1,4 +1,4 @@
-import { Action } from "@ngrx/store";
+import { Action as actions } from "@ngrx/store";
 
 import { Fixture } from "../../model/fixture";
 
@@ -17,71 +17,71 @@ export enum FixtureActionTypes {
   DELETE_FIXTURE_FAIL = "[Fixture] Delete Fixtures Fail"
 }
 
-export class LoadFixtures implements Action {
+export class LoadFixtures implements actions {
   readonly type = FixtureActionTypes.LOAD_FIXTURES;
 }
 
-export class LoadFixturesSuccess implements Action {
+export class LoadFixturesSuccess implements actions {
   readonly type = FixtureActionTypes.LOAD_FIXTURES_SUCCESS;
 
   constructor(public payload: Fixture[]) {}
 }
 
-export class LoadFixturesFail implements Action {
+export class LoadFixturesFail implements actions {
   readonly type = FixtureActionTypes.LOAD_FIXTURES_FAIL;
 
   constructor(public payload: string) {}
 }
 
-export class LoadFixture implements Action {
+export class LoadFixture implements actions {
   readonly type = FixtureActionTypes.LOAD_FIXTURE;
 
   constructor(public payload: number) {}
 }
 
-export class LoadFixtureSuccess implements Action {
+export class LoadFixtureSuccess implements actions {
   readonly type = FixtureActionTypes.LOAD_FIXTURE_SUCCESS;
 
   constructor(public payload: Fixture) {}
 }
 
-export class LoadFixtureFail implements Action {
+export class LoadFixtureFail implements actions {
   readonly type = FixtureActionTypes.LOAD_FIXTURE_FAIL;
 
   constructor(public payload: string) {}
 }
 
-export class CreateFixture implements Action {
+export class CreateFixture implements actions {
   readonly type = FixtureActionTypes.CREATE_FIXTURE;
 
   constructor(public payload: Fixture) {}
 }
 
-export class CreateFixtureSuccess implements Action {
+export class CreateFixtureSuccess implements actions {
   readonly type = FixtureActionTypes.CREATE_FIXTURE_SUCCESS;
 
   constructor(public payload: Fixture) {}
 }
 
-export class CreateFixtureFail implements Action {
+export class CreateFixtureFail implements actions {
   readonly type = FixtureActionTypes.CREATE_FIXTURE_FAIL;
 
   constructor(public payload: string) {}
 }
 
-export class DeleteFixture implements Action {
+export class DeleteFixture implements actions {
   readonly type = FixtureActionTypes.DELETE_FIXTURE;
 
   constructor(public payload: number) {}
 }
 
-export class DeleteFixtureSuccess implements Action {
+export class DeleteFixtureSuccess implements actions {
   readonly type = FixtureActionTypes.DELETE_FIXTURE_SUCCESS;
 
   constructor(public payload: number) {}
 }
 
-export class DeleteFixtureFail implements Action {
+export class DeleteFixtureFail implements actions {
   readonly type = FixtureActionTypes.DELETE_FIXTURE_FAIL;
 
   constructor(public payload: string) {}
