@@ -1,6 +1,6 @@
 name: Node Build trail
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs: 
   test_pull_request: 
