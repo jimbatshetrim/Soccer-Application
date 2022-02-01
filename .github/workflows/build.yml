@@ -7,7 +7,8 @@ test_pull_request:
 runs_on: ubuntu-latest
 steps:
   - uses: actions/checkout@v2
-  - name: Cache node modules
+  
+- name: Cache node modules
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -20,8 +21,8 @@ steps:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-  - name: install dep
-    run: npm install
+- name: install dep
+  run: npm install
 
-  - name: echo
-    run: npm run echo
+- name: echo
+  run: npm run echo
